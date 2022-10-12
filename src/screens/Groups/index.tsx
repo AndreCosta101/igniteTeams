@@ -4,6 +4,7 @@ import { Header } from '../../components/Header';
 import { HighLight } from '../../components/HighLight';
 import { GroupCard } from '../../components/GroupCard';
 import { EmptyList } from '../../components/EmptyList';
+import { Button } from '../../components/Button';
 
 import { 
     Container, 
@@ -34,6 +35,9 @@ export default function Groups() {
             message="Que tal cadastrar a primeira turma?"
           />
         )} 
+      />
+      <Button 
+        title={"Criar nova turma"}
       />
 
     </Container>
