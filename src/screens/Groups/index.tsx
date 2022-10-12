@@ -1,3 +1,4 @@
+import { Header } from '../../components/Header';
 import { 
     Container, 
 
@@ -7,7 +8,7 @@ import {
 export default function Groups() {
   return (
     <Container>
-
+      <Header/>
     </Container>
   );
 }
