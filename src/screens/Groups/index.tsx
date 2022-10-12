@@ -3,6 +3,7 @@ import { FlatList } from 'react-native';
 import { Header } from '../../components/Header';
 import { HighLight } from '../../components/HighLight';
 import { GroupCard } from '../../components/GroupCard';
+import { EmptyList } from '../../components/EmptyList';
 
 import { 
     Container, 
@@ -10,11 +11,11 @@ import {
 
 
 export default function Groups() {
-    const [groups, setGroups] = useState<string[]>(['RocketSeat','AMigos', 'Xe']);
+    const [groups, setGroups] = useState<string[]>([]);
 
   return (
     <Container>
-      <Header showBackButton/>
+      <Header/>
       <HighLight 
         title="Turmas" 
         subTitle="Jogue com sua turma"
@@ -26,7 +27,13 @@ export default function Groups() {
           <GroupCard 
             title={item} 
           />
-        )}  
+        )} 
+        contentContainerStyle={groups.length === 0 && {flex: 1} }
+        ListEmptyComponent={() => (
+          <EmptyList 
+            message="Que tal cadastrar a primeira turma?"
+          />
+        )} 
       />
 
     </Container>
