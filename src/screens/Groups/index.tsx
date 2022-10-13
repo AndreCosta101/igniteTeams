@@ -6,13 +6,21 @@ import { GroupCard } from '../../components/GroupCard';
 import { EmptyList } from '../../components/EmptyList';
 import { Button } from '../../components/Button';
 
+import { useNavigation } from '@react-navigation/native';
+
 import { 
     Container, 
 } from './styles';
 
 
 export function Groups() {
-    const [groups, setGroups] = useState<string[]>([]);
+  const [groups, setGroups] = useState<string[]>([]);
+
+  const navigation = useNavigation();
+
+  function navigateToNewGroup(){
+      navigation.navigate('new');
+  }
 
   return (
     <Container>
@@ -39,6 +47,7 @@ export function Groups() {
       />
       <Button 
         title={"Criar nova turma"}
+        onPress={navigateToNewGroup}
       />
 
     </Container>
