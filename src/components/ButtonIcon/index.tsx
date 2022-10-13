@@ -13,7 +13,7 @@ export function ButtonIcon({icon, type='PRIMARY', ...rest}: Props) {
         <Container {...rest}>
             <Icon 
                 name={icon} 
-                type="PRIMARY"
+                type={type}
             />
         </Container>
     );
