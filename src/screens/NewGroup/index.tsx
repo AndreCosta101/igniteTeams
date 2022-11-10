@@ -6,13 +6,19 @@ import { Input } from "../../components/Input";
 import { Container, Content, Icon } from "./styles";
 
 import { useNavigation } from "@react-navigation/native";
+import { createGroup } from '../../storage/group/createGroup';
 
 export function NewGroup() {
     const [group, setGroup] = useState('');
     const navigation = useNavigation();
 
-    function navigateToPlayers(){
-        navigation.navigate('players', { group});
+    async function handleNew(){
+        try {
+            await createGroup(group)
+            navigation.navigate('players', { group}); 
+        } catch (error) {
+           console.log(error) 
+        }
     }
 
     
@@ -32,7 +38,7 @@ export function NewGroup() {
                 <Button 
                     title="Criar"
                     style={{marginTop: 20}}
-                    onPress={navigateToPlayers}
+                    onPress={handleNew}
                 />
             </Content>
         </Container>
