@@ -18,6 +18,7 @@ import { Button } from '../../components/Button';
 
 import { Container, Form, HeaderList, PlayersQuantity } from './styles';
 import { AppError } from '../../utils/AppError';
+import { removePlayerByGroup } from '../../storage/player/removePlayerBYGroup';
 
 
 
@@ -71,6 +72,16 @@ export function Players() {
     } catch (error) {
       console.log(error);
       Alert.alert('Pessoas', 'Não foi possível carregar as pessoas do time selecionado')
+    }
+  }
+
+  async function handlePlayerRemove(playerName: string){
+    try {
+      await removePlayerByGroup(playerName, group)
+      fetchPlayersByTeam();
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Remover', 'Não foi possível remover a pessoa selecionada')
     }
   }
 
@@ -128,7 +139,7 @@ export function Players() {
           renderItem={({ item }) => (
             <PlayerCard 
               name={item.name}
-              onRemove={() => {}} 
+              onRemove={() => handlePlayerRemove(item.name)} 
             />
           )}
           ListEmptyComponent={() => (
